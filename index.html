@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALPINE</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+    ALPINE TODOLIST
+    <div x-data="{ newTodo: '', todos: []  }">
+        <input x-model="newTodo" />
+        <button x-on:click="todos.push(newTodo)">Add</button>
+        <template x-for="todo in todos">
+            <li x-text="todo"></li>
+        </template>
+    </div>
+</body>
+
+</html>
