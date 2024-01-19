@@ -7,10 +7,12 @@
     <title>ALPINE</title>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
 </head>
 
 <body>
     ALPINE TODOLIST
+    <h1 class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600">unocss</h1>
     <div x-data="{ newTodo: '', todos: []  }">
         <input x-model="newTodo" />
         <button x-on:click="todos.push(newTodo)">Add</button>
@@ -18,9 +20,21 @@
             <li x-text="todo"></li>
         </template>
     </div>
-    <button hx-get="/clicked" hx-swap="outerHTML">
+    <button hx- hx-get="/clicked" hx-swap="outerHTML">
         Click Me
     </button>
+    <button hx-get="/clicked" hx-trigger="click" hx-target="#parent-div" hx-swap="outerHTML">
+        Click Me!222
+    </button>
+    <div id="parent-div">parent-div</div>
+    <button class="btn btn-danger" hx-get="/contact" hx-target="#need-delete" hx-swap="outerHTML swap:1s">
+        Delete
+    </button>
+    <input id="need-delete" />
+    <button hx-get="/404.html" hx-target="#id1" hx-swap="outerHTML">404</button>
+    <div id="id1"></div>
+    <div x-init="new Pikaday($el)">2</div>
+
 </body>
 
 </html>
